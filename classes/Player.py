@@ -42,7 +42,8 @@ class CPUPlayer(Player):
         else: return self.playMedium(sticks)
     def playMedium(self,sticks):
         # TODO compléter ici avec les quelques conditions pour éviter de faire une grosse erreur aux derniers tours
-        return self.playRandom(sticks)
+        if sticks<=4: return sticks-1
+        else: return self.playRandom(sticks)
     def playEasy(self,sticks):
         return self.playRandom(sticks)
     def playRandom(self,sticks):
@@ -63,10 +64,3 @@ class CPUPlayer(Player):
     def addLoss(self):
         super().addLoss()
         self.previousNeuron=None
-
-
-
-
-        
-
-
