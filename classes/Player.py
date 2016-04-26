@@ -40,7 +40,7 @@ class CPUPlayer(Player):
         else: return self.playMedium(sticks)
     def playMedium(self,sticks):
         # TODO compléter ici avec les quelques conditions pour éviter de faire une grosse erreur aux derniers tours
-        if self.nbSticks<=3: return nbSticks
+        if self.nbSticks<=4: return nbSticks-1
         return self.playRandom(sticks)
     def playEasy(self,sticks):
         return self.playRandom(sticks)
