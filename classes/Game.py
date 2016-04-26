@@ -1,3 +1,4 @@
+# -*-coding:UTF-8 -*
 # Inutile de modifier cette classe normalement
 
 class Game:

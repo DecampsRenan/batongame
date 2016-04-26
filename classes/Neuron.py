@@ -1,3 +1,5 @@
+# -*-coding:UTF-8 -*
+
 import random
 
 BASE_WEIGHT = 10
