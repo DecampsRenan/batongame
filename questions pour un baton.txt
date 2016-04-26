@@ -2,3 +2,12 @@
 Q. En utilisant ce script, commencez à jouer contre l’ordinateur en faisant quelques parties. L’ordinateur peut faire des erreurs évidentes lors du dernier tour; à l’aide du code, expliquez pourquoi.
 
 => L'ordinateur joue de manière totalement aléatoire du début à la fin, le nombre de batons joués n'est pas choisi de manière réfléchis, il peut donc faire des erreurs évidentes lors du dernier tour même si il a l'occasion de gagné durant ce tour.
+
+6 Mode intermédiaire
+Q. Mode "medium" : écrire quelques lignes de code dans la méthode de l’IA (playMedium) pour éviter que l’ordinateur ne commette une erreur au dernier tour lorsqu’il a toutes les chances de gagner (le nombre de bâtons restants est de 2, 3 ou 4). Est-ce de l’apprentissage? Expliquez.
+
+=> Non car il n'apprend pas par lui même, cette nouvelle règle pour le dernier tour est fixe, et ne dépend pas des parties jouées ou de la partie en cours.
+
+
+7 Implémentation du réseau de neurones Nous allons maintenant compléter le 
+Q. Testez bien l’utilisation du réseau de neurones en faisant jouer la machine d’abord contre vous (mode "hard", nombre de bâtons = 15 et mode "verbose" à True).
