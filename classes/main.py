@@ -8,4 +8,4 @@ game = Game(15)
 humanPlayer = HumanPlayer('Sharky')
 cpuPlayer   = CPUPlayer('Terminator', 'easy', 15)
 
-game.start(humanPlayer, cpuPlayer, true)
+game.start(humanPlayer, cpuPlayer, True)
