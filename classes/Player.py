@@ -7,12 +7,16 @@ class Player:
     def __init__(self,name):
         self.name = name
         self.nbWin = 0
+
     def getName(self):
         return self.name
+
     def getNbWin(self):
         return self.nbWin
+
     def addWin(self):
         self.nbWin+=1
+
     def addLoss(self):
         pass
 
@@ -36,18 +40,23 @@ class CPUPlayer(Player):
         self.mode = mode
         self.netw = NeuronNetwork(3,nbSticks)
         self.previousNeuron = None
+
     def play(self,sticks):
         if self.mode=='easy': return self.playEasy(sticks)
         elif self.mode=='hard': return self.playHard(sticks)
         else: return self.playMedium(sticks)
+
     def playMedium(self,sticks):
         if   sticks==1: return 1
         elif sticks<=4: return sticks-1
         else: return self.playRandom(sticks)
+
     def playEasy(self,sticks):
         return self.playRandom(sticks)
+
     def playRandom(self,sticks):
         return random.randint(1, (sticks%3)+1)
+
     def playHard(self,sticks):
         # TODO utiliser le réseau neuronal pour choisir le nombre de bâtons à jouer
         # utiliser l'attribut self.previousNeuron pour avoir le neuron précédemment sollicité dans la partie
@@ -55,21 +64,23 @@ class CPUPlayer(Player):
         # utiliser la méthode 'chooseConnectedNeuron' du self.previousNeuron puis retourner le nombre de bâtons à jouer
         # bien activer le réseau de neurones avec la méthode 'activateNeuronPath' après avoir choisi un neurone cible
         # attention à gérer les cas particuliers (premier tour ou sticks==1)
-        #if self.previousNeuron == None:
-
-        #else:
-        #    shift = self.previousNeuron.index - sticks
-        #    currentNeuron = self.previousNeuron.chooseConnectedNeuron(shift)
-        #    nbSticksToPlay = currentNeuron.
+        if self.previousNeuron == None:
+            self.previousNeuron = self.netw.getNeuron(15)
+        else:
+            shift = self.previousNeuron.index - sticks
+            currentNeuron = self.previousNeuron.chooseConnectedNeuron(shift)
+            nbSticksToPlay = currentNeuron.index
         
-        self.netw.printAllConnections()
-        self.netw.printScores()
+        # self.netw.printAllConnections()
+        # self.netw.printScores()
         return self.playMedium(sticks)
     def getNeuronNetwork(self): return self.netw
+
     def addWin(self):
         super().addWin()
         self.netw.recompenseConnections()
         self.previousNeuron=None
+
     def addLoss(self):
         super().addLoss()
         self.previousNeuron=None

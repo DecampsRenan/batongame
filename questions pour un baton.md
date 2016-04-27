@@ -11,4 +11,5 @@
 ### Apprentissage
 > Q. Pour être plus efficace dans l’apprentissage, nous allons maintenant laisser l’ordinateur jouer contre lui-même en mode "hard". Comment s’appelle cette méthode et pourquoi l’utilise-t-on ?
 
-- Cette méthode est appellée **Apprentissage par renforcement**.
+- Cette méthode est appellée **Apprentissage par renforcement**. Elle est utilisée dans ce cas car elle permet
+au programme d'apprendre par lui-meme; il suffit de le laisser jouer contre lui-meme pour qu'il puisse apprendre à travers le système de récompense.
