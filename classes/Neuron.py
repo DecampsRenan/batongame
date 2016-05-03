@@ -20,7 +20,7 @@ class NeuronNetwork:
             neuron.makeConnections(maxDist,nbSticks,BASE_WEIGHT)
 
         self.initPath()
-    
+
     def initPath(self):
         # Path correspond au 'chemin que le réseau de neurone va emprunter'
         self.path = {}
@@ -51,7 +51,7 @@ class NeuronNetwork:
 
 
 class Neuron:
-    
+
     # Constructeur permettant d'initialiser un neurone
     def __init__(self,network,index):
         self.network = network # Référence vers le réseau de neurones
@@ -62,14 +62,14 @@ class Neuron:
     # Chaque Neuron aura maxDist*2+1 connexions (ici, 7-1=6 :: cf.range); sauf le dernier
     # qui en aura maxDist+1 (4-1=3 :: cf.range).
     # Cette valeur est utilisée afin de construire les connexions entre les neurons
-    # et leur associer 
+    # et leur associer
     def makeConnections(self,maxDist,nbSticks,baseWeight):
         if self.index!=nbSticks: nb=maxDist*2 +1
         else: nb=maxDist+1
         for i in range(1,nb): # range(1, nb) =>  [1, 2, 3, 4, 5, ..., nb-1]
             neuron = self.network.getNeuron(self.index-i)
             if neuron!=None: self.connections[neuron] = baseWeight
-    
+
     # Méthode qui retourne un neurone connecté au neurone actuel
     # en fonction du 'shift' (cf. CPUPlayer).
     def chooseConnectedNeuron(self,shift):
@@ -79,24 +79,24 @@ class Neuron:
         # au hasard dans une liste de connexions disponibles en fonction de leurs poids
         nearestNeurons = {}
         print('Avant (self.connections) : ', len(self.connections))
-        
-        # Un truc dans ce genre là... 
+
+        # Un truc dans ce genre là...
         for neuron, w in self.connections.items():
             if neuron.testNeuron(shift): nearestNeurons[neuron] = w
 
         print('Après (nearestNeurons) : ', len(nearestNeurons))
         return self.weighted_choice(nearestNeurons)
 
-    # TODO: savoir à quoi sert cette fonction...
+    # Méthode qui sert à tester si on peut jouer avec le prochain neuron donné en paramètre
     def testNeuron(self,inValue):
         # Renvoie un booléen : True si la différence entre la 'inValue' et
         # la valeur du neurone actuel est comprise entre 1 et 3 inclus
-        dif = inValue - self.index
+        dif = self.index - inValue
         return (dif >= 1 and dif <= 3)
 
     # Méthode permettant de récompenser la connexion entre le neurone actuel et 'neuron'
     def recompenseConnection(self,neuron):
-        # TODO récompenser la connexion entre le neurone actuel et 'neuron'
+        self.connections[neuron] = RECOMPENSE;
         pass
 
     # Affiche les connexions du noeud courant
@@ -104,7 +104,7 @@ class Neuron:
         print("Connections of", self.asString() + ":")
         for neuron in self.connections:
             print(neuron.asString(),self.connections[neuron])
-    
+
     # Affiche le nom du nom
     def asString(self):
         return "N"+str(self.index)
