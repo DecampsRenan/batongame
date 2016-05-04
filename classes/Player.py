@@ -66,15 +66,15 @@ class CPUPlayer(Player):
         # bien activer le réseau de neurones avec la méthode 'activateNeuronPath' après avoir choisi un neurone cible
         # attention à gérer les cas particuliers (premier tour ou sticks==1)
         if sticks == 1: return 1
-        
+
         if self.previousNeuron == None:
             self.previousNeuron = self.netw.getNeuron(sticks)
             shift = 0
         else:
             shift = self.previousNeuron.index - sticks
-            
+
         currentNeuron = self.previousNeuron.chooseConnectedNeuron(shift)
-        
+
         # Cas ou sticks = 2 (normalement)
         if currentNeuron == None:
             nbSticksToPlay = 1
@@ -82,10 +82,10 @@ class CPUPlayer(Player):
             nbSticksToPlay = sticks - currentNeuron.index
             self.netw.activateNeuronPath(self.previousNeuron, currentNeuron)
             self.previousNeuron = currentNeuron
-            
+
         return nbSticksToPlay
-        
-        
+
+
     def getNeuronNetwork(self): return self.netw
 
     def addWin(self):
