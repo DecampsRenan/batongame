@@ -5,7 +5,7 @@ from Player import *
 
 game = Game(15)
 
-humanPlayer = HumanPlayer('Sharky')
+humanPlayer = CPUPlayer('Sharky', 'hard', 15)
 cpuPlayer   = CPUPlayer('Terminator', 'hard', 15)
 
 game.start(humanPlayer, cpuPlayer, True)

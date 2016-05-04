@@ -1,6 +1,6 @@
 # -*-coding:UTF-8 -*
 
-import random
+from random import *
 from Neuron import *
 
 class Player:
@@ -55,7 +55,8 @@ class CPUPlayer(Player):
         return self.playRandom(sticks)
 
     def playRandom(self,sticks):
-        return random.randint(1, (sticks%3)+1)
+        if sticks < 4: return randint(1, sticks)
+        else: return randint(1, 3)
 
     def playHard(self,sticks):
         # TODO utiliser le réseau neuronal pour choisir le nombre de bâtons à jouer
@@ -64,16 +65,27 @@ class CPUPlayer(Player):
         # utiliser la méthode 'chooseConnectedNeuron' du self.previousNeuron puis retourner le nombre de bâtons à jouer
         # bien activer le réseau de neurones avec la méthode 'activateNeuronPath' après avoir choisi un neurone cible
         # attention à gérer les cas particuliers (premier tour ou sticks==1)
+        if sticks == 1: return 1
+        
         if self.previousNeuron == None:
-            self.previousNeuron = self.netw.getNeuron(15)
+            self.previousNeuron = self.netw.getNeuron(sticks)
+            shift = 0
         else:
             shift = self.previousNeuron.index - sticks
-            currentNeuron = self.previousNeuron.chooseConnectedNeuron(shift)
-            nbSticksToPlay = currentNeuron.index
+            
+        currentNeuron = self.previousNeuron.chooseConnectedNeuron(shift)
         
-        # self.netw.printAllConnections()
-        # self.netw.printScores()
-        return self.playMedium(sticks)
+        # Cas ou sticks = 2 (normalement)
+        if currentNeuron == None:
+            nbSticksToPlay = 1
+        else:
+            nbSticksToPlay = sticks - currentNeuron.index
+            self.netw.activateNeuronPath(self.previousNeuron, currentNeuron)
+            self.previousNeuron = currentNeuron
+            
+        return nbSticksToPlay
+        
+        
     def getNeuronNetwork(self): return self.netw
 
     def addWin(self):
