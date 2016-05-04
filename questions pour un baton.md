@@ -13,3 +13,6 @@
 
 - Cette méthode est appellée **Apprentissage par renforcement**. Elle est utilisée dans ce cas car elle permet
 au programme d'apprendre par lui-meme; il suffit de le laisser jouer contre lui-meme pour qu'il puisse apprendre à travers le système de récompense.
+
+> Q. En laissant l’ordinateur jouer contre lui-même, que constatez-vous à la ﬁn de N parties? 
+
