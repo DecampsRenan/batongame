@@ -16,3 +16,4 @@ au programme d'apprendre par lui-meme; il suffit de le laisser jouer contre lui-
 
 > Q. En laissant l’ordinateur jouer contre lui-même, que constatez-vous à la ﬁn de N parties? 
 
+L'ordinateur arrive à apprendre de lui-même à travers le système de poids entre neurones qui s'incrémente en fonction des victoires. On obtient donc des reseaux de neurones avec des résultats très proches entre eux au bout de N partie, avec un avantage pour le joueur qui commence. On peut voir des liaisons entre neurones qui ont des poids beaucoups plus élevés que ses congénères, ce sont les neurones où l'ordinateur est sûr de gagné à 100%.
