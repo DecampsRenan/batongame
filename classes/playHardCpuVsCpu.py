@@ -1,4 +1,5 @@
 # -*-coding:UTF-8 -*
+import pickle
 from Game   import *
 from Neuron import *
 from Player import *
@@ -14,7 +15,11 @@ while i < 10000:
     i += 1
 
 print("\nReseau neuronal de R2D2 :")
-print(cpuPlayer.netw.printAllConnections())
+print(cpuPlayer.getNeuronNetwork().printAllConnections())
+with open('reseau_neuronal','wb') as output: pickle.dump(cpuPlayer.getNeuronNetwork(),output,pickle.HIGHEST_PROTOCOL)
 
 print("\nReseau neuronal de Terminator :")
-print(cpuPlayer2.netw.printAllConnections())
+print(cpuPlayer2.getNeuronNetwork().printAllConnections())
+
+with open('reseau_neuronal', 'rb') as inp: ns = pickle.load(inp)
+print('bite', inp)
