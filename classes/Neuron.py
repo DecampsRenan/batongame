@@ -110,3 +110,17 @@ class Neuron:
   # Affiche le nom du nom
   def asString(self):
     return "N"+str(self.index)
+
+  # Renvoie un Neuron parmi les Neurons connectés au neuron actuel. 
+  def weighted_choice(self,connections): 
+    # La ligne ci-dessous est constituée d'un générateur; 
+    # elle retourne la somme des w (pour weight) de chaque items de la collection. 
+    total = sum(w for c, w in connections.items()) 
+    r = random.uniform(0, total) 
+    upto = 0 
+ 
+    # On retourne le neurone si il répond à la condition suivante: 
+    # si upto + poids du neurone >= r => on retourne ce neurone. 
+    for c, w in connections.items(): 
+      if upto + w >= r: return c 
+      upto += w
