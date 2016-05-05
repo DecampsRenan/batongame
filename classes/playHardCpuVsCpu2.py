@@ -5,8 +5,8 @@ from Player import *
 
 game = Game(15)
 
-cpuPlayer = CPUPlayer('R2D2', 'easy', 15)
-cpuPlayer2   = CPUPlayer('Terminator', 'easy', 15)
+cpuPlayer  = CPUPlayer('R2D2', 'easy', 15)
+cpuPlayer2 = CPUPlayer('Terminator', 'easy', 15)
 
 i = 0
 while i < 10000:
@@ -17,8 +17,8 @@ print("\n- easy contre easy")
 print("Nombre de parties gagnees de R2D2 : ", cpuPlayer.getNbWin())
 print("Nombre de parties gagnees de Terminator : ", cpuPlayer2.getNbWin(),"\n")
 
-cpuPlayer = CPUPlayer('R2D2', 'easy', 15)
-cpuPlayer2   = CPUPlayer('Terminator', 'medium', 15)
+cpuPlayer  = CPUPlayer('R2D2', 'easy', 15)
+cpuPlayer2 = CPUPlayer('Terminator', 'medium', 15)
 
 i = 0
 while i < 10000:
