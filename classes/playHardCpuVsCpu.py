@@ -20,6 +20,3 @@ with open('reseau_neuronal','wb') as output: pickle.dump(cpuPlayer.getNeuronNetw
 
 print("\nReseau neuronal de Terminator :")
 print(cpuPlayer2.getNeuronNetwork().printAllConnections())
-
-with open('reseau_neuronal', 'rb') as inp: ns = pickle.load(inp)
-print('bite', inp)
