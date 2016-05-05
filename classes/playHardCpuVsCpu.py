@@ -21,3 +21,4 @@ print("\nReseau neuronal de R2D2 :")
 with open('reseau_neuronal','wb') as output: pickle.dump(cpuPlayer.getNeuronNetwork(),output,pickle.HIGHEST_PROTOCOL)
 
 print("\nReseau neuronal de Terminator :")
+print(cpuPlayer2.getNeuronNetwork().printAllConnections())

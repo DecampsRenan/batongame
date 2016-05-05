@@ -1,3 +1,21 @@
+# Apprentissage
+
+**Vincent BERNIERE**  
+**Renan DECAMPS**
+
+## Infos
+
+> Le joueur qui commence sera toujours R2D2.
+
+Les scripts sont les suivants:
+  - SCRIPT1: `python main.py`
+  - SCRIPT2: `python playHardCpuVsCpu.py`
+  - SCRIPT3: `python playHardCpuVsCpu2.py`
+  - SCRIPT4: `python finalGame.py`
+
+---
+## Questions
+
 ### Les bases et le mode simple 
 > Q. En utilisant ce script, commencez à jouer contre l’ordinateur en faisant quelques parties. L’ordinateur peut faire des erreurs évidentes lors du dernier tour; à l’aide du code, expliquez pourquoi.
 
@@ -17,3 +35,75 @@ au programme d'apprendre par lui-meme; il suffit de le laisser jouer contre lui-
 > Q. En laissant l’ordinateur jouer contre lui-même, que constatez-vous à la ﬁn de N parties? 
 
 L'ordinateur arrive à apprendre de lui-même à travers le système de poids entre neurones qui s'incrémente en fonction des victoires. On obtient donc des reseaux de neurones avec des résultats très proches entre eux au bout de N partie, avec un avantage pour le joueur qui commence. On peut voir des liaisons entre neurones qui ont des poids beaucoups plus élevés que ses congénères, ce sont les neurones où l'ordinateur est sûr de gagné à 100%.
+
+> Q. Expliquez la différence de scores entre les 2 joueurs. 
+
+- easy contre easy
+```
+Nombre de parties gagnees de R2D2 :  506
+Nombre de parties gagnees de Terminator :  494
+```
+
+Score assez équilibré dans l'ensemble vu que chaque décision est totalement aléatoire et a la même probabilitée.
+
+- easy contre medium
+```
+Nombre de parties gagnees de R2D2 :  174
+Nombre de parties gagnees de Terminator :  826
+```
+
+Le joueur qui joue en medium ne fais pas d'erreur lors des derniers tours (lorsqu'il y a 4 batons ou moins) contrairement au mode easy qui peut en faire.
+
+- easy contre hard
+```
+Nombre de parties gagnees de R2D2 :  262
+Nombre de parties gagnees de Terminator :  738
+```
+
+Le mode hard permet au joueur d'apprendre via le réseau neuronal, plus il joue, plus il aura de chance de gagner.
+
+- medium contre hard
+```
+Nombre de parties gagnees de R2D2 :  370
+Nombre de parties gagnees de Terminator :  630
+```
+
+Le mode hard permet au joueur d'apprendre via le réseau neuronal, plus il joue, plus il aura de chance de gagner. Le medium a juste plus de victoire que le mode easy grâce au fait qu'il ne fais pas d'erreur lors des derniers tours.
+
+- medium contre medium
+```
+Nombre de parties gagnees de R2D2 :  471
+Nombre de parties gagnees de Terminator :  529
+```
+
+Score globalement équilibré due au même algorithme, les joueurs n'apprennent pas, les probabilités de gagner sont donc les même de chaque côté.
+
+- hard contre hard
+```
+Nombre de parties gagnees de R2D2 :  832
+Nombre de parties gagnees de Terminator :  168
+```
+
+Un joueur qui commence à jouer a plus de chance de gagner la partie dans ce jeu si les décisions sont réfléchis et non aléatoires.
+
+### Jeu ﬁnal 
+> Q. Jouez en mode "hard" en se plaçant "Joueur 2" (joueur qui ne commence pas). Est-ce possible de gagner? Expliquer pourquoi
+
+Oui, mais il faut que l'ordinateur fasse une erreur dans une de ses décisions, dont la probabilité est très faible, il faudra donc jouer un grand nombre de fois pour pouvoir avoir une chance de gagner contre l'ordinateur.
+
+### Question optionnelle : évaluation  
+> Q. Repartez du script de l’ordinateur contre lui-même et évaluez le taux d’erreur en jouant un grand
+nombre fois avec le réseau neuronal final. Décrivez le protocole pour calculer ce taux et mettez-le
+en pratique. Proposez une (ou plusieurs) solution(s) pour améliorer le réseau neuronal final.
+
+- On va simuler 1 000 000 de parties entre deux IA entrainées avec le même réseau de neurones.
+- A la fin de la partie, on récupère le nombre de victoires du joueur ayant commencé la partie.
+
+```
+Sur  1000000  parties, le joueur qui commence a gagné  998350 .
+Soit un taux de  99.835 % de victoires sur le nombre de match disputés.
+```
+
+- Normalement, le joueur qui commence aurait dût avoir un taux de victoires à 100%; or il y a 0.165% de défaites.
+- Un moyen d'améliorer ces taux serait de simuler plusieurs types de parties et de fusionner les réseaux de neurones
+produits afin d'avoir une IA plus complète.

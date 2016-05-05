@@ -88,6 +88,8 @@ class CPUPlayer(Player):
 
     def getNeuronNetwork(self): return self.netw
 
+    def setNeuronNetwork(self,network): self.netw = network
+
     def addWin(self):
         super().addWin()
         self.netw.recompenseConnections()

@@ -1,7 +1,10 @@
 # -*-coding:UTF-8 -*
+import pickle
 from Game   import *
 from Neuron import *
 from Player import *
+
+with open('reseau_neuronal', 'rb') as inp: ns = pickle.load(inp)
 
 game = Game(15)
 
@@ -19,5 +22,5 @@ while chaine.lower() != "q":
         chaine = input()
         if chaine.lower() in ("easy","medium","hard"):
             cpuPlayer   = CPUPlayer('Terminator', chaine.lower(), 15)
-
-            game.start(player, cpuPlayer, True)
+            cpuPlayer.setNeuronNetwork(ns)
+            game.start(cpuPlayer, player, True)
